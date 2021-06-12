@@ -5,19 +5,21 @@ import SampleLoopQuestions from "./SampleLoopQuestions";
 import Slide from "react-reveal/Slide";
 
 function LoopQuestions() {
+
+  //varible
   const [v, setV] = useState({ dataset: {} });
 
   const fetchDataQuestion = async () => {
     const db = firebase.firestore();
-    var docRef = db.collection("DeveloperDB").doc("Question");
+    var docRef = await db.collection("DeveloperDB").doc("Question");
     docRef
       .get()
       .then((doc) => {
         if (doc.exists) {
-          var a = doc.data(); //json array data read
+          var a = doc.data(); //json array data read 
           setV({
-            ...v,
-            dataset: a,
+            ...v,//
+            dataset:a,
           });
          // console.log("Document data:", a);
         } else {
@@ -30,6 +32,7 @@ function LoopQuestions() {
       });
   };
 
+ 
   //page onload time render one time method
   useEffect(() => {
     fetchDataQuestion();

@@ -58,7 +58,7 @@ export default function SocialMedia() {
   const viewdb = () => {};
 
   const addbtn = () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       // alert(x);
       var l = x.length;
@@ -89,7 +89,7 @@ export default function SocialMedia() {
     }
   };
   const updatebtn = () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       // alert(x);
       var l = x.length;

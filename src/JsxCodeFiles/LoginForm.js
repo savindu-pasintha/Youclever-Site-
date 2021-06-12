@@ -5,8 +5,6 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-
 
 import Cookies from "js-cookie";
 
@@ -59,20 +57,28 @@ function LoginForm(props) {
   };
 
   const loginbtn = () => {
-    var name = Cookies.get("Signupusername");
-    var pass = Cookies.get("Signuppassword");
+    var name = localStorage.getItem("sn"); //Cookies.get("Signupusername");
+    var pass = localStorage.getItem("sp"); //Cookies.get("Signuppassword");
+
     if (name === val.username && pass === val.password) {
       alert("Successfull Login.");
       Cookies.set("LoginName", "LOGGED");
+      localStorage.setItem("lname", "LOGGED");
       handleCloseDialog();
     } else {
       alert("Login Failed !");
     }
   };
 
-  var textcolorvariable = props.textcolor;
-  var loginName = Cookies.get("LoginName");
 
+  var textcolorvariable = props.textcolor;
+  var loginName = "";
+  var n = localStorage.getItem("lname"); //Cookies.get("LoginName");
+  if (n === "LOGIN") {
+    loginName = "LOGIN";
+  } else {
+    loginName = "LOGGED";
+  }
   return (
     <div>
       <Button

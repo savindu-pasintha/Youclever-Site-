@@ -33,6 +33,11 @@ export default function LogoutAlertDialogSlide() {
     Cookies.set("SignupName", "SIGNUP");
     Cookies.set("LoginName", "LOGIN");
     handleClose();
+
+    localStorage.setItem("lname", "LOGIN");
+    localStorage.setItem("sname", "SIGNUP");
+
+    window.location.reload(true); //referesh the page
   };
 
   return (

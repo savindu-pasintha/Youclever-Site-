@@ -15,6 +15,8 @@ function AllDevelopers() {
   const [buffer, setBuffer] = React.useState(10);
 
   const progressRef = React.useRef(() => {});
+
+  
   React.useEffect(() => {
     progressRef.current = () => {
       if (progress > 100) {
@@ -27,9 +29,8 @@ function AllDevelopers() {
         setBuffer(progress + diff + diff2);
       }
     };
-  });
 
-  React.useEffect(() => {
+    /*
     const timer = setInterval(() => {
       progressRef.current();
     }, 500);
@@ -37,7 +38,10 @@ function AllDevelopers() {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+    */
+  },[progressRef]);
+
+
 
   return (
     <div
@@ -87,7 +91,9 @@ function AllDevelopers() {
           color: "#ff6701",
           position: "relative",
           top: "200px",
-         
+       paddingLeft:"10%",
+       paddingRight:"10%"
+      
         }}
       >
         <Developers />

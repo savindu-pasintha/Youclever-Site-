@@ -106,7 +106,6 @@ function SignUpForm(props) {
     var id = x.slice(0, l - 10); //remove the last 9 charactore for @gmail.com
 
     const db = firebase.firestore();
-
     //db.collection("name").add(); this method can not add document to collection
     await db
       .collection("DeveloperDB")
@@ -121,11 +120,14 @@ function SignUpForm(props) {
       .then(() => {
         alert("Registration Sucessfully.");
         //cookies set
-
-        Cookies.set("SignupName", "");
+        Cookies.set("SignupName", "signup");
         // Cookies.set("Signupdisable", "true");
         Cookies.set("Signupusername", val.username);
         Cookies.set("Signuppassword", val.password);
+
+        localStorage.setItem("sname", "");
+        localStorage.setItem("sn", val.username);
+        localStorage.setItem("sp", val.password);
 
         setVal({
           ...val,
@@ -136,16 +138,24 @@ function SignUpForm(props) {
 
         //close the signup page
         handleCloseDialog();
+        window.location.reload(true); //referesh the page
       })
       .catch((error) => {
         alert("Registration Failed !.");
         console.error("Error writing Document: ", error);
+        localStorage.setItem("sname", "SIGNUP");
       });
   };
 
   var textcolorvariable = props.textcolor;
   //read cookies values
-  var titleNameSignUp = Cookies.get("SignupName");
+  var titleNameSignUp;
+  var n = localStorage.getItem("sname");
+  if (n === "SIGNUP") {
+    titleNameSignUp = "SIGNUP";
+  } else {
+    titleNameSignUp = "REGISTERED";
+  }
 
   return (
     <div>

@@ -59,7 +59,7 @@ export default function SentAnswer(props) {
     e.preventDefault();
   };
   const messagedatasubmit = () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     var l = x.length;
     var user = x.slice(0, l - 10);
 

@@ -33,11 +33,13 @@ export default function AllAnswersView() {
     An: "45",
   });
   /*--------------------------------*/
+
+  
   React.useEffect(() => {
     fetchDataQue();
     fetchDataans();
-  });
-
+  },[]);
+  
   const fetchDataQue = async () => {
     try {
       const db = firebase.firestore();

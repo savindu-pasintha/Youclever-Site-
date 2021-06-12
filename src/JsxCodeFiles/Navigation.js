@@ -94,6 +94,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 /*---------------------------------*/
 function Navigation() {
+  React.useEffect(() => {
+    if (
+      Cookies.get("SignupName") === "" ||
+      Cookies.set("Signupusername") ||
+      Cookies.set("Signuppassword")
+    ) {
+      Cookies.set("SignupName", "");
+      Cookies.set("Signupusername", "");
+      Cookies.set("Signuppassword", "");
+    }
+  });
+
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -134,7 +146,7 @@ function Navigation() {
     content: () => componentRef.current,
   });
 
-  var log = Cookies.get("Signupusername");
+  var logi = "gg".length; //Cookies.get("Signupusername").length();
 
   return (
     <div className="Navigation" style={{ width: "100%" }}>
@@ -195,7 +207,7 @@ function Navigation() {
             <div style={{ width: "5%", background: "none" }}>
               <Image
                 src={
-                  log.length > 0
+                  logi > 0
                     ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwu-up1VYN27Qrvhf0MJ4FRq-GUyiwk0JAuXdIXo1tBzCShyt8sY7wk-FZz2Cq-sgDUtM&usqp=CAU"
                     : "https://cdn2.iconfinder.com/data/icons/audio-16/96/user_avatar_profile_login_button_account_member-512.png"
                 }
@@ -315,9 +327,7 @@ function Navigation() {
       <div id="developers"></div>
       <AllDevelopers />
       <div id="developers"></div>
-      <div id="about">
-        
-      </div>
+      <div id="about"></div>
 
       <About />
 

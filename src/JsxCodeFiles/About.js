@@ -54,7 +54,7 @@ export default function About() {
     <div className="container-fluid" style={{ width: "90%" }}>
       <div
         className="row"
-        style={{ width: "100%", position: "relative", top: "430px" }}
+        style={{ width: "100%", position: "relative", top: "430px",paddingLeft:"8%" }}
       >
         <div className="col-md-4 col-sm-12" style={{ width: "33%" }}>
           <Card className={classes.root}>

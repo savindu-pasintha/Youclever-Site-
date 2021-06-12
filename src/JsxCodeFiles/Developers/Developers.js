@@ -5,15 +5,16 @@ import SampleDevelopers from "./SampleDevelopers";
 
 function Developers() {
   const [v, setV] = useState({ dataset: {}, index: 0 });
-  const fetchDataUser = (collection, document) => {
-    var x = Cookies.get("Signupusername");
 
-    if (x !== "") {
+  const fetchDataUser = async (collection, document) => {
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
+
+    if (x !== "x") {
       // alert(x);
       var l = x.length;
       var id = x.slice(0, l - 10);
       const db = firebase.firestore();
-      var docRef = db.collection(collection).doc(document);
+      var docRef = await db.collection(collection).doc(document);
       docRef
         .get()
         .then((doc) => {
@@ -26,7 +27,7 @@ function Developers() {
             });
             // var arr = Object.values(doc.data()); //json obj convert to array js
             // setArrayd(arr);
-            //   console.log("developer Document data:", b);
+            // console.log("developer Document data:", b);
           } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -54,7 +55,7 @@ function Developers() {
             datasetImg: a,
             imgArr: b,
           });
-          //  console.log("Document data:", a);
+          console.log("Document data images:", a);
         } else {
           // doc.data() will be undefined in this case
           console.log("No such document!");
@@ -64,11 +65,15 @@ function Developers() {
         console.log("Error getting document:", error);
       });
   };
+
+
   //page onload time render one time method
   useEffect(() => {
+    // alert("Hai ");
     fetchDataUser("DeveloperDB", "user");
     fetchDataUserImage();
   }, []);
+
 
   var arrayname = v.dataset;
   var x = Object.values(arrayname); //object{} convert as a array []
@@ -79,7 +84,7 @@ function Developers() {
     var image = "";
     try {
       image = img.datasetImg[d.userId].portfolioMainImg.toString();
-     // console.log("developer---------", image);
+      // console.log("developer---------", image);
     } catch (e) {
       console.log(e);
     }
@@ -99,7 +104,7 @@ function Developers() {
   });
 
   return (
-    <div className="row" style={{ width: "100%", textAlign: "center" }}>
+    <div className="row" style={{ width: "100%", position:"relative",paddingLeft:"5%" }}>
       {items}
     </div>
   );

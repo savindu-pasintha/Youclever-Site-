@@ -19,11 +19,18 @@ import Footer from "./JsxCodeFiles/Footer.js";
 ReactDOM.render(
   <React.StrictMode>
     <Navigation />
-    {/*<ViewAnswers />
+    {/*
+    <ViewAnswers />
     <AllQuestions />
     <AllDevelopers id="developers" />
     <About />
-    <Footer />*/}
+    <Footer />
+     <AllDevelopers id="developers" />
+    <About />
+    <Footer />
+    <AllQuestions />
+
+    */}
   </React.StrictMode>,
   document.getElementById("root")
 );

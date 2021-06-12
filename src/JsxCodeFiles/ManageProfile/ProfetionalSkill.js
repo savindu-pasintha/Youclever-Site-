@@ -61,7 +61,7 @@ export default function ProfetionalSkill(props) {
     });
   };
   const addbtn = () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       //  alert(x);
 
@@ -94,7 +94,7 @@ export default function ProfetionalSkill(props) {
     }
   };
   const updatebtn = () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       //  alert(x);
 

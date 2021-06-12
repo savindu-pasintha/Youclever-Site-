@@ -19,6 +19,8 @@ import Fade from "react-reveal/Fade";
 
 import Portfolio from "../ViewPortFolio";
 
+import Photo from "./abc.jpg";
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -32,7 +34,7 @@ export default function SampleDevelopers(props) {
     <div
       style={{
         width: "100%",
-        height: "auto",
+        height: "100%",
         position: "relative",
         top: "20px",
         textAlign: "center",
@@ -43,9 +45,9 @@ export default function SampleDevelopers(props) {
           <CardActionArea>
             <CardMedia
               component="img"
-              alt="Contemplative Reptile"
+              alt="C"
               height="140"
-              image={props.image}
+              image={props.image || Photo}
               title="Contemplative Reptile"
               style={{
                 width: "200px",

@@ -31,6 +31,8 @@ import SentAnswer from "./SentAnswer";
 
 import ViewAnswer from "./ViewAnswer";
 
+import Photo from "./my.jpg";
+
 const useStyles = makeStyles({
   root: {
     width: "90%",
@@ -208,7 +210,7 @@ export default function ViewQuestionAndAnswers(props) {
                 width: "100px",
                 height: "100px",
               }}
-              src={props.image}
+              src={props.image ||  Photo }
               alt="imagke"
               onMouseEnter={handlePopoverOpen}
             />

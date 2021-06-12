@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 
 import firebase from "../Firbase_FireStore_Database/firebase";
 import Cookies from "js-cookie";
+import { isEmptyArray } from "formik";
 
 export default function UserForm(props) {
   const [val, setVal] = useState({
@@ -17,7 +18,7 @@ export default function UserForm(props) {
     h: "",
   });
 
-  //get username
+  //get username inoput tag wal onchange event ekedi eke ew gann 
   const geta = (e) => {
     setVal({
       ...val,
@@ -66,12 +67,21 @@ export default function UserForm(props) {
       h: e.target.value,
     });
   };
+
+  const isEmpty = (value)=>{
+    var p = new Boolean(true);
+    if(value.length === 0){p=new Boolean(false);}
+    return p;
+  }
   const addbtn = () => {
     const db = firebase.firestore();
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
+   
     if (x !== "") {
-      //  alert(x);
 
+      if(isEmpty(val.a) && isEmpty(val.b)  && isEmpty(val.c)  && isEmpty(val.d ) && isEmpty(val.e ) && isEmpty(val.h)){
+
+      //  alert(x);
       var l = x.length;
       var id = x.slice(0, l - 10);
       // id = "2";
@@ -95,18 +105,33 @@ export default function UserForm(props) {
         .catch((error) => {
           console.error("Error writing Document: ", error);
         });
+
+      } else {
+        alert("Please Enter Values !");
+      }
     } else {
       alert("Please SignUp first !");
     }
+
   };
   const updatebtn = () => {
     const db = firebase.firestore();
 
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");// cookie eke var x = example@gmail.com; ok store wenne
 
     if (x !== "") {
+
+      
+      if(val.a !=="" && val.b !== "" && val.c !=="" && val.d !=="" && val.e !=="" && val.h !==""){
+
       // alert(x);
-      var l = x.length;
+      var l = x.length;//lenth is a method 
+      //id [e,x.a,m,p,l,e,@,g,m,a,i,l,.,c,o,m]
+      //id [0,1,2,3,4,5,6,7,8,9,10]
+      // x = example@gmail.com;
+      // l= 15; digak oya
+      // 10  =  @gmail.com oke diga akuru gana
+      // l-10= 15-10=5
       var id = x.slice(0, l - 10); //remove the last 9 charactore for @gmail.com
       //id = "2";
       db.collection("DeveloperDB")
@@ -128,9 +153,15 @@ export default function UserForm(props) {
         .catch((error) => {
           console.error("Error Updating document: ", error);
         });
+
+      } else {
+        alert("Please Enter Values !");
+      }
+    
     } else {
       alert("Please SignUp first !");
     }
+  
   };
   const deletebtn = () => {
     const db = firebase.firestore();
@@ -159,7 +190,7 @@ export default function UserForm(props) {
           width: "100%",
         }}
       >
-        <TextField
+         <TextField
           onChange={geta}
           required
           type="text"

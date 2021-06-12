@@ -180,7 +180,7 @@ export default function InputImages() {
   //read firestore
   const fetchImages = (collection, document) => {
     try {
-      var x = Cookies.get("Signupusername");
+      var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
       if (x !== "") {
         // alert(x);
         var l = x.length;
@@ -227,7 +227,7 @@ export default function InputImages() {
   const saveBtn1 = async () => {
     /*  alert("Document successfully Written.");
      */
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       //  alert(x);
       var l = x.length;
@@ -262,7 +262,7 @@ export default function InputImages() {
     }
   };
   const saveBtn2 = async () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       //  alert(x);
 
@@ -297,7 +297,7 @@ export default function InputImages() {
     }
   };
   const saveBtn3 = async () => {
-    var x = Cookies.get("Signupusername");
+    var x =localStorage.getItem("sn"); //Cookies.get("Signupusername");
     if (x !== "") {
       //  alert(x);
       var l = x.length;
@@ -331,7 +331,7 @@ export default function InputImages() {
     }
   };
   const saveBtn4 = async () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       //  alert(x);
       var l = x.length;
@@ -365,7 +365,7 @@ export default function InputImages() {
     }
   };
   const saveBtn5 = async () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       //  alert(x);
       var l = x.length;
@@ -399,7 +399,7 @@ export default function InputImages() {
     }
   };
   const saveBtn6 = async () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       //  alert(x);
       var l = x.length;
@@ -433,7 +433,7 @@ export default function InputImages() {
     }
   };
   const saveBtn7 = async () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       //  alert(x);
       var l = x.length;
@@ -467,7 +467,7 @@ export default function InputImages() {
     }
   };
   const saveBtn8 = async () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       //  alert(x);
       var l = x.length;
@@ -501,7 +501,7 @@ export default function InputImages() {
     }
   };
   const saveBtn9 = async () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");//Cookies.get("Signupusername");
     if (x !== "") {
       //  alert(x);
       var l = x.length;

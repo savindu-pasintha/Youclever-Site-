@@ -52,9 +52,11 @@ const useStylesSelect = makeStyles((theme) => ({
 }));
 
 function QuestionsAdd() {
+
+
+
   const classes = useStyles();
   const classesFloatActionBtn = useStylesFloatActionBtn();
-
   /*----------- */
   const [valueQ, setValueQ] = React.useState(""); //question
   const classesSelect = useStylesSelect();
@@ -62,21 +64,27 @@ function QuestionsAdd() {
   const [technology, setTechnology] = React.useState(""); //technology
   const [content, setContent] = React.useState(""); //content
   const [filename, setFilename] = React.useState(""); //filename
+
   const handleChangeSelectALanguage = (event) => {
     setAge(event.target.value);
+    console.log(age);
   };
   const handleChangeSelecttechnology = (event) => {
     setTechnology(event.target.value);
+    console.log(technology);
   };
 
   const handleChangeQuestion = (event) => {
     setValueQ(event.target.value);
+    console.log(valueQ);
   };
   const getfilename = (event) => {
     setFilename(event.target.value);
+    console.log(filename);
   };
   const getcontent = (event) => {
     setContent(event.target.value);
+    console.log(content);
   };
 
   /*-------------------------------------*/
@@ -99,10 +107,10 @@ function QuestionsAdd() {
 
   /*--------------add to databse firestore----------codes ----------------------*/
   const addbtn = () => {
-    var x = Cookies.get("Signupusername");
+    var x = localStorage.getItem("sn");  //Cookies.get("Signupusername");
     var l = x.length;
     var user = x.slice(0, l - 10);
-
+   
     if (x !== "") {
       // alert(x);
       const db = firebase.firestore();
@@ -132,7 +140,10 @@ function QuestionsAdd() {
           setFilename("");
           setValueQ("");
           setAge("");
-        })
+          window.location.reload(true); //referesh the page
+      
+        } 
+        )
         .catch((error) => {
           console.error("Error writing Document: ", error);
         });
@@ -158,7 +169,19 @@ function QuestionsAdd() {
             value={valueQ}
             onChange={handleChangeQuestion}
           />
-          <FormControl className={classesSelect.formControl}>
+            <TextField
+            id="Languages"
+            label="Languages"
+            onChange={handleChangeSelectALanguage}
+          
+          />
+            <TextField
+            id="Technology"
+            label="Technology"
+            onChange={handleChangeSelecttechnology}
+          
+          />
+         {/* <FormControl className={classesSelect.formControl}>
             <InputLabel id="demo-simple-select-label">Languages</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -169,6 +192,7 @@ function QuestionsAdd() {
               <MenuItem value={"java"}>Java</MenuItem>
               <MenuItem value={"php"}>PHP</MenuItem>
               <MenuItem value={"javascript"}>JavaScript</MenuItem>
+            
             </Select>
           </FormControl>
           <FormControl className={classesSelect.formControl}>
@@ -189,7 +213,7 @@ function QuestionsAdd() {
               <MenuItem value={"Fluter"}>Fluter</MenuItem>
               <MenuItem value={"Reat Native"}>Reat Native</MenuItem>
             </Select>
-          </FormControl>
+          </FormControl>*/}
           <TextField
             onChange={getfilename}
             id="standard-basic"
